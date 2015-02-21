@@ -80,7 +80,10 @@ public class Projectile : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter(Collider c) {
-
+		if (c.gameObject.tag == "Crystal") {
+			Destroy (gameObject);
+			c.gameObject.GetComponent<Health>().takeHit (10);
+		}
 	}
 
 

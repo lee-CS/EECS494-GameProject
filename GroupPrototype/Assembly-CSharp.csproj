@@ -46,16 +46,22 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Script\Crystal.cs" />
+     <Compile Include="Assets\Script\Enemy\Projectile.cs" />
+     <Compile Include="Assets\Script\Enemy\ProjectileSpawner.cs" />
+     <Compile Include="Assets\Script\Enemy\enemy.cs" />
+     <Compile Include="Assets\Script\Enemy\enemy_physics.cs" />
+     <Compile Include="Assets\Script\Enemy\spawner_left_right.cs" />
+     <Compile Include="Assets\Script\Enemy\spawner_up_down.cs" />
      <Compile Include="Assets\Script\Entity.cs" />
      <Compile Include="Assets\Script\GameCamera.cs" />
      <Compile Include="Assets\Script\GameManager.cs" />
+     <Compile Include="Assets\Script\Health.cs" />
+     <Compile Include="Assets\Script\HealthBar.cs" />
      <Compile Include="Assets\Script\PlayerInput.cs" />
      <Compile Include="Assets\Script\PlayerPhysics.cs" />
      <Compile Include="Assets\Script\Util.cs" />
-     <Compile Include="Assets\Script\enemy.cs" />
-     <Compile Include="Assets\Script\enemy_physics.cs" />
-     <Compile Include="Assets\Script\spawner_left_right.cs" />
-     <Compile Include="Assets\Script\spawner_up_down.cs" />
+     <Compile Include="Assets\Script\wall.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>K:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.2/UnityEngine.UI.dll</HintPath>
  </Reference>
