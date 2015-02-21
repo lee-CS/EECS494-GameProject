@@ -19,6 +19,9 @@ public class PlayerInput : MonoBehaviour {
 
 	private PlayerPhysics physics;
 
+	public GameObject wallPrefab;
+	private bool buildingWall;
+	private GameObject curWall;
 
 	// Use this for initialization
 	void Start () {
@@ -33,15 +36,37 @@ public class PlayerInput : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		targetSpeed = Input.GetAxisRaw("Horizontal") * speed;
-		currentSpeed = distance(currentSpeed, targetSpeed, accel);
-		targetSpeed2 = Input.GetAxisRaw("Vertical") * speed;
-		currentSpeed2 = distance(currentSpeed2, targetSpeed2, accel);
+		if (!buildingWall) {
+			targetSpeed = Input.GetAxisRaw("Horizontal") * speed;
+			currentSpeed = distance(currentSpeed, targetSpeed, accel);
+			targetSpeed2 = Input.GetAxisRaw("Vertical") * speed;
+			currentSpeed2 = distance(currentSpeed2, targetSpeed2, accel);
 
-		amountToMove.x = currentSpeed;
-		amountToMove.y = currentSpeed2;
+			amountToMove.x = currentSpeed;
+			amountToMove.y = currentSpeed2;
 
-		physics.Move(amountToMove*Time.deltaTime);	
+			physics.Move(amountToMove*Time.deltaTime);
+		}
+
+		if (Input.GetKeyDown(KeyCode.F)) {
+			GameObject wall = (GameObject)Instantiate(wallPrefab);
+			wall.transform.position = transform.position;
+			wall.GetComponent<wall>().underConstruction = true;
+			//wall.GetComponent<wall>().color = "green";
+			Debug.Log("wall");
+			buildingWall = true;
+			curWall = wall;
+		}
+		if (Input.GetKey (KeyCode.F) && buildingWall)
+		{
+			Color temp = curWall.renderer.material.color; 
+			//temp.a += 0.1f;
+			curWall.renderer.material.color = temp;	
+		}
+		else if (Input.GetKeyUp (KeyCode.F) && buildingWall){
+			Destroy (curWall);
+			buildingWall = false;
+		}
 	}
 
 	void OnTriggerEnter(Collider c) {
