@@ -9,7 +9,7 @@
       <File FileName="Assets\Script\Crystal.cs" Line="6" Column="1" />
       <File FileName="Assets\Script\Health.cs" Line="34" Column="14" />
       <File FileName="Assets\Script\Enemy\Projectile.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\HealthBar.cs" Line="37" Column="14" />
+      <File FileName="Assets\Script\HealthBar.cs" Line="40" Column="28" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

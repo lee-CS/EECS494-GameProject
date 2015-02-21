@@ -19,8 +19,10 @@ public class HealthBar : MonoBehaviour {
 	float overlayZ = -3;
 	float baseZ = -2;
 
-	float barWidth = 4;
-	float barHeight = .1f;
+	public float barWidth = 4;
+	public float barHeight = .1f;
+
+	public bool show = true;
 
 
 	// Use this for initialization
@@ -42,6 +44,10 @@ public class HealthBar : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		baseBar.enabled = show;
+		overlayBar.enabled = show;
+
+
 		baseBar.transform.position = gameObject.transform.position + new Vector3(0, 0, baseZ);
 		overlayBar.transform.position = gameObject.transform.position + new Vector3(
 			((barWidth / 2f) * (1 - parentHealth.getHealthFraction())), 
