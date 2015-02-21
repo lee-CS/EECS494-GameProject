@@ -92,12 +92,20 @@ public class enemy : Entity {
 		targetSpeed = dir * speed_val;
 		currentSpeed = distance(currentSpeed, targetSpeed, accel);
 
+
+		/*
 		if(type == "LeftRight")
 			amountToMove.x = currentSpeed;
 
 		if(type == "UpDown")
 			amountToMove.y = currentSpeed;
+		*/
 
+
+
+		// Handle movement
+		amountToMove.x = Mathf.Cos (Util.getAngleVector(GameObject.FindGameObjectWithTag("Crystal").transform.position, transform.position)) * speed;
+		amountToMove.y = Mathf.Sin (Util.getAngleVector(GameObject.FindGameObjectWithTag("Crystal").transform.position, transform.position)) * speed;                            	
 
 
 		//for attacking not using it right now
