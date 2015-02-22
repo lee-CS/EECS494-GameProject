@@ -3,11 +3,9 @@ using System.Collections;
 
 public enum ColorType {
 	Red,
-	Orange,
 	Yellow,
 	Green,
 	Blue,
-	Purple,
 	NumColors
 };
 
@@ -41,11 +39,9 @@ public class Util : MonoBehaviour {
 		switch(colorChance) {
 
 		case ((int)ColorType.Red): 		return ColorType.Red; break;
-		case ((int)ColorType.Orange): 	return ColorType.Orange; break;
 		case ((int)ColorType.Yellow): 	return ColorType.Yellow; break;
 		case ((int)ColorType.Green): 	return ColorType.Green; break;
 		case ((int)ColorType.Blue):		return ColorType.Blue; break;
-		case ((int)ColorType.Purple): 	return ColorType.Purple; break;
 
 		}
 
@@ -56,11 +52,9 @@ public class Util : MonoBehaviour {
 	static public Color getColorObject(ColorType c) {
 		switch(c) {
 		case ColorType.Red: 	return new Color(1, 0, 0, 1); break;
-		case ColorType.Orange: 	return new Color(1, .5f, 0, 1); break;
 		case ColorType.Yellow:	return new Color(1, 1, 0, 1); break;
 		case ColorType.Green:	return new Color(0, 1, 0, 1); break;
 		case ColorType.Blue:	return new Color(0, 0, 1, 1); break;
-		case ColorType.Purple:	return new Color(.5f, 0, 1, 1); break;
 		
 
 		}
