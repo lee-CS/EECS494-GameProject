@@ -3,7 +3,7 @@ using System.Collections;
 
 public class wall : MonoBehaviour {
 
-	public bool underConstruction;
+	public bool underConstruction  = true;
 	public string color;
 	
 	// Use this for initialization
@@ -28,7 +28,7 @@ public class wall : MonoBehaviour {
 		else {
 			if (renderer.material.color.a < 1.0f) {
 				Color temp = renderer.material.color; 
-				temp.a += 0.01f;
+				temp.a += 0.02f;
 				renderer.material.color = temp;	
 			}
 			else

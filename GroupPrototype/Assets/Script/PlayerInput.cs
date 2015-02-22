@@ -28,6 +28,12 @@ public class PlayerInput : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		if (player_num == 1)
+			curColor = ColorType.Blue;
+		if (player_num == 2)
+			curColor = ColorType.Red;
+		GetComponent<MeshRenderer>().material.color = Util.getColorObject(curColor);
+
 		physics = GetComponent<PlayerPhysics>();
 
 		Vector3 temp = new Vector3 (0, 0, 0);
@@ -39,6 +45,7 @@ public class PlayerInput : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 		if (!buildingWall) {
 
 			if (player_num == 1) {
@@ -61,16 +68,23 @@ public class PlayerInput : MonoBehaviour {
 			physics.Move(amountToMove*Time.deltaTime);
 		}
 
+		///CONSTRUCTION CONTROLS
+
+		/// Begin construction
 		if (verifyPlayer() && Input.GetKeyDown(KeyCode.F)||
 		    (!verifyPlayer() && Input.GetKeyDown (KeyCode.Period))) {
 			GameObject wall = (GameObject)Instantiate(wallPrefab);
+			wall.GetComponent<MeshRenderer>().material.color = Util.getColorObject(curColor);
 			wall.transform.position = transform.position;
+			Color temp = wall.GetComponent<MeshRenderer>().material.color; 
+			temp.a = 0f;
+			wall.GetComponent<MeshRenderer>().material.color = temp;
 			wall.GetComponent<wall>().underConstruction = true;
-			//wall.GetComponent<wall>().color = new Color (;
 			Debug.Log("wall");
 			buildingWall = true;
 			curWall = wall;
 		}
+		/// Continue construction
 		if ( (verifyPlayer() && Input.GetKey (KeyCode.F) && buildingWall ) ||
 		    (!verifyPlayer() && Input.GetKey (KeyCode.Period) && buildingWall ))
 		{
@@ -82,13 +96,37 @@ public class PlayerInput : MonoBehaviour {
 				curWall = null;
 			}
 		}
-
-
-		else if ( (verifyPlayer() && Input.GetKeyUp (KeyCode.F) && buildingWall) ||
-		         (!verifyPlayer() && Input.GetKeyUp (KeyCode.Period) && buildingWall )){
+		/// Cancel construction if you let go while still being built
+		if ( (verifyPlayer() && Input.GetKeyUp (KeyCode.F) && buildingWall)){
 			Destroy (curWall);
 			buildingWall = false;
 		}
+		else if ( (!verifyPlayer() && Input.GetKeyUp (KeyCode.Period) && buildingWall)){
+			Destroy (curWall);
+			buildingWall = false;
+		}
+
+
+		if (verifyPlayer() && Input.GetKeyDown(KeyCode.G) && !buildingWall) {
+			if (curColor == ColorType.Blue) {
+				curColor = ColorType.Green;
+			}
+			else {
+				curColor = ColorType.Blue;
+			}
+			GetComponent<MeshRenderer>().material.color = Util.getColorObject(curColor);
+
+		}
+		if (!verifyPlayer() && Input.GetKeyDown(KeyCode.Slash) && !buildingWall) {
+			if (curColor == ColorType.Red) {
+				curColor = ColorType.Yellow;
+			}
+			else {
+				curColor = ColorType.Red;
+			}
+			GetComponent<MeshRenderer>().material.color = Util.getColorObject(curColor);
+		}
+
 	}
 
 	void OnTriggerEnter(Collider c) {
