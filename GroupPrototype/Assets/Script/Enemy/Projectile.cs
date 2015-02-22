@@ -24,7 +24,7 @@ public class Projectile : MonoBehaviour {
 	private float currentSpeed;
 	private float targetSpeed;
 	private Vector2 target;
-	private ColorType color;
+	public ColorType color;
 
 	enemy_physics physics;
 

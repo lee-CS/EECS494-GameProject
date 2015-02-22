@@ -14,6 +14,10 @@ public class wall : MonoBehaviour {
 		                                               gameObject.renderer.material.color.b,
 		                                               0);
 		//renderer.material.color = temp;
+
+
+
+		transform.localRotation = Quaternion.Euler (0, 0, Util.getAngleVector (transform.position, GameObject.FindGameObjectWithTag ("Crystal").transform.position));	 
 	}
 
 	// Update is called once per frame
