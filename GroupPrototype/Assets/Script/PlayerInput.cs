@@ -8,7 +8,6 @@ public class PlayerInput : MonoBehaviour {
 	public float speed = 8;
 	public float accel = 30;
 
-
 	public float currentSpeed;
 	private float targetSpeed;
 	public float currentSpeed2;
@@ -24,6 +23,8 @@ public class PlayerInput : MonoBehaviour {
 	public GameObject wallPrefab;
 	private bool buildingWall;
 	private GameObject curWall;
+
+	public ColorType curColor;
 
 	// Use this for initialization
 	void Start () {
@@ -60,7 +61,8 @@ public class PlayerInput : MonoBehaviour {
 			physics.Move(amountToMove*Time.deltaTime);
 		}
 
-		if (verifyPlayer() && Input.GetKeyDown(KeyCode.F)) {
+		if (verifyPlayer() && Input.GetKeyDown(KeyCode.F)||
+		    (!verifyPlayer() && Input.GetKeyDown (KeyCode.Period))) {
 			GameObject wall = (GameObject)Instantiate(wallPrefab);
 			wall.transform.position = transform.position;
 			wall.GetComponent<wall>().underConstruction = true;
@@ -69,7 +71,8 @@ public class PlayerInput : MonoBehaviour {
 			buildingWall = true;
 			curWall = wall;
 		}
-		if (verifyPlayer() && Input.GetKey (KeyCode.F) && buildingWall)
+		if ( (verifyPlayer() && Input.GetKey (KeyCode.F) && buildingWall ) ||
+		    (!verifyPlayer() && Input.GetKey (KeyCode.Period) && buildingWall ))
 		{
 			Color temp = curWall.renderer.material.color; 
 			curWall.renderer.material.color = temp;	
@@ -79,7 +82,10 @@ public class PlayerInput : MonoBehaviour {
 				curWall = null;
 			}
 		}
-		else if (verifyPlayer() && Input.GetKeyUp (KeyCode.F) && buildingWall){
+
+
+		else if ( (verifyPlayer() && Input.GetKeyUp (KeyCode.F) && buildingWall) ||
+		         (!verifyPlayer() && Input.GetKeyUp (KeyCode.Period) && buildingWall )){
 			Destroy (curWall);
 			buildingWall = false;
 		}
