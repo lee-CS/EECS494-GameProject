@@ -1,12 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\PlayerInput.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\Enemy\enemy.cs">
     <Files>
-      <File FileName="Assets\Script\PlayerInput.cs" Line="57" Column="24" />
+      <File FileName="Assets\Script\PlayerInput.cs" Line="76" Column="45" />
       <File FileName="Assets\Script\GameManager.cs" Line="12" Column="1" />
       <File FileName="Assets\Script\PlayerPhysics.cs" Line="50" Column="45" />
-      <File FileName="Assets\Script\wall.cs" Line="27" Column="19" />
-      <File FileName="..\..\..\EECS494-F14-A2.2-ShinPatrick\Assets\Scripts\player1.cs" Line="71" Column="27" />
+      <File FileName="Assets\Script\wall.cs" Line="12" Column="31" />
+      <File FileName="..\..\..\EECS494-F14-A2.2-ShinPatrick\Assets\Scripts\player1.cs" Line="17" Column="2" />
+      <File FileName="Assets\Script\Enemy\enemy.cs" Line="107" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

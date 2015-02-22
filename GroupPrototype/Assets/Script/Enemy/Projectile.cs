@@ -33,8 +33,6 @@ public class Projectile : MonoBehaviour {
 
 
 
-
-
 	// Sets a new position for the projectile to head towards
 	public void goTo(Vector2 t) {
 		target = t;
@@ -54,9 +52,8 @@ public class Projectile : MonoBehaviour {
 	void Start () {
 		
 		physics = GetComponent<enemy_physics>();
-		color = Util.randomColor();
+		color = Util.randomColor ();
 		GetComponent<MeshRenderer>().material.color = Util.getColorObject(color);
-
 
 		if (goTowardsCrystal) {
 			goTo(GameObject.FindGameObjectWithTag("Crystal").transform.position);
@@ -80,7 +77,14 @@ public class Projectile : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter(Collider c) {
+		if (c.gameObject.tag == "Crystal") {
+			Destroy (gameObject);
+			c.gameObject.GetComponent<Health>().takeHit (10);
+		}
 
+		if (c.gameObject.tag == "Wall") {
+			Destroy (gameObject);
+		}
 	}
 
 

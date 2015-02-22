@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Script\Crystal.cs" />
      <Compile Include="Assets\Script\Enemy\Projectile.cs" />
      <Compile Include="Assets\Script\Enemy\ProjectileSpawner.cs" />
      <Compile Include="Assets\Script\Enemy\enemy.cs" />
@@ -55,6 +56,8 @@
      <Compile Include="Assets\Script\Entity.cs" />
      <Compile Include="Assets\Script\GameCamera.cs" />
      <Compile Include="Assets\Script\GameManager.cs" />
+     <Compile Include="Assets\Script\Health.cs" />
+     <Compile Include="Assets\Script\HealthBar.cs" />
      <Compile Include="Assets\Script\PlayerInput.cs" />
      <Compile Include="Assets\Script\PlayerPhysics.cs" />
      <Compile Include="Assets\Script\Util.cs" />

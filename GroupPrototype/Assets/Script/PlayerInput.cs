@@ -3,6 +3,8 @@ using System.Collections;
 
 public class PlayerInput : MonoBehaviour {
 
+	public int player_num;
+
 	public float speed = 8;
 	public float accel = 30;
 
@@ -37,9 +39,19 @@ public class PlayerInput : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (!buildingWall) {
-			targetSpeed = Input.GetAxisRaw("Horizontal") * speed;
+
+			if (player_num == 1) {
+				targetSpeed = Input.GetAxisRaw("Horizontal") * speed;
+				targetSpeed2 = Input.GetAxisRaw("Vertical") * speed;
+			}
+
+			if (player_num == 2) {
+				targetSpeed = Input.GetAxisRaw("Horizontal2") * speed;
+				targetSpeed2 = Input.GetAxisRaw("Vertical2") * speed;
+			}
+			
+			
 			currentSpeed = distance(currentSpeed, targetSpeed, accel);
-			targetSpeed2 = Input.GetAxisRaw("Vertical") * speed;
 			currentSpeed2 = distance(currentSpeed2, targetSpeed2, accel);
 
 			amountToMove.x = currentSpeed;
@@ -48,22 +60,26 @@ public class PlayerInput : MonoBehaviour {
 			physics.Move(amountToMove*Time.deltaTime);
 		}
 
-		if (Input.GetKeyDown(KeyCode.F)) {
+		if (verifyPlayer() && Input.GetKeyDown(KeyCode.F)) {
 			GameObject wall = (GameObject)Instantiate(wallPrefab);
 			wall.transform.position = transform.position;
 			wall.GetComponent<wall>().underConstruction = true;
-			//wall.GetComponent<wall>().color = "green";
+			//wall.GetComponent<wall>().color = new Color (;
 			Debug.Log("wall");
 			buildingWall = true;
 			curWall = wall;
 		}
-		if (Input.GetKey (KeyCode.F) && buildingWall)
+		if (verifyPlayer() && Input.GetKey (KeyCode.F) && buildingWall)
 		{
 			Color temp = curWall.renderer.material.color; 
-			//temp.a += 0.1f;
 			curWall.renderer.material.color = temp;	
+			if (curWall.renderer.material.color.a >= 1.0f) {
+				Debug.Log("wall completed");
+				buildingWall = false;
+				curWall = null;
+			}
 		}
-		else if (Input.GetKeyUp (KeyCode.F) && buildingWall){
+		else if (verifyPlayer() && Input.GetKeyUp (KeyCode.F) && buildingWall){
 			Destroy (curWall);
 			buildingWall = false;
 		}
@@ -92,6 +108,13 @@ public class PlayerInput : MonoBehaviour {
 		
 	}
 
+	private bool verifyPlayer() {
+		if (player_num == 1)
+			return true;
+		return false;
+
+	}
+
 
 	//my functions
 
@@ -107,4 +130,5 @@ public class PlayerInput : MonoBehaviour {
 			return (dir == Mathf.Sign (target - n)) ? n : target;
 		}
 	}
+
 }
