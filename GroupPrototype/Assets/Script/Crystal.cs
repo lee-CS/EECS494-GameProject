@@ -26,6 +26,7 @@ public class Crystal : MonoBehaviour {
 
 		if (health.isDead ()) {
 			Destroy(gameObject);
+			Application.LoadLevel ("GameOver");
 		}
 
 	}

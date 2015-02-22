@@ -60,6 +60,8 @@
      <Compile Include="Assets\Script\HealthBar.cs" />
      <Compile Include="Assets\Script\PlayerInput.cs" />
      <Compile Include="Assets\Script\PlayerPhysics.cs" />
+     <Compile Include="Assets\Script\ScneChanges\GG.cs" />
+     <Compile Include="Assets\Script\ScneChanges\MainMenu.cs" />
      <Compile Include="Assets\Script\Util.cs" />
      <Compile Include="Assets\Script\wall.cs" />
  <Reference Include="UnityEngine.UI">

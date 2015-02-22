@@ -62,9 +62,4 @@ public class Util : MonoBehaviour {
 	}
 
 
-
-	static public int getColorLayer(ColorType c) {
-		return 0;
-
-	}
 }
