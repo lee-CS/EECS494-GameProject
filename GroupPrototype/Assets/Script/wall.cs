@@ -4,7 +4,12 @@ using System.Collections;
 public class wall : MonoBehaviour {
 
 	public bool underConstruction  = true;
+	public bool disappear  = false;
+
 	public string color;
+
+	private float timeCount = 0.0f;
+	private float time = 3.2f;
 	
 	// Use this for initialization
 	void Start () {
@@ -22,8 +27,12 @@ public class wall : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+
 		if (!underConstruction) {
-	
+			timeCount += Time.deltaTime;
+			if (timeCount > time) {
+				disappear = true;
+			}
 		}
 		else {
 			if (renderer.material.color.a < 1.0f) {
@@ -33,6 +42,16 @@ public class wall : MonoBehaviour {
 			}
 			else
 				underConstruction = false;
+		}
+
+		if (disappear) {
+			if (renderer.material.color.a > 0.0f) {
+				Color temp = renderer.material.color; 
+				temp.a -= 0.05f;
+				renderer.material.color = temp;	
+			}
+			else
+				Destroy (this.gameObject);
 		}
 	}
 }
