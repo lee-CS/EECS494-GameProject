@@ -140,7 +140,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49d21da9280b83a46b0c81b7fbeaab9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collisionMask:
+  blueCollision:
+    serializedVersion: 2
+    m_Bits: 256
+  redCollision:
+    serializedVersion: 2
+    m_Bits: 2048
+  yellowCollision:
+    serializedVersion: 2
+    m_Bits: 1024
+  greenCollision:
+    serializedVersion: 2
+    m_Bits: 512
+  empty_layer:
     serializedVersion: 2
     m_Bits: 0
   grounded: 0
@@ -159,6 +171,7 @@ MonoBehaviour:
   speed: 4
   goTowardsCrystal: 1
   max_dist: 6.4000001
+  color: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

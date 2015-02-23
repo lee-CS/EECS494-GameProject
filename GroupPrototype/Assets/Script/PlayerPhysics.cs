@@ -123,6 +123,17 @@ public class PlayerPhysics : MonoBehaviour {
 			}
 		}
 
+		Vector3 enemyDir = new Vector3 (deltaX, deltaY);
+		Vector3 o = new Vector3 (p.x + center.x * Mathf.Sign(deltaX), p.y + center.y * Mathf.Sign(deltaY));
+		Debug.DrawRay (o, enemyDir.normalized);
+		
+		ray = new Ray (o, enemyDir.normalized);
+
+		if (Physics.Raycast (ray, Mathf.Sqrt (deltaX * deltaX + deltaY * deltaY), collisionMask)) {
+			deltaX = 0;
+			deltaY = 0;
+		}
+
 		Vector2 finalTransform = new Vector2 (deltaX, deltaY);
 		
 		transform.Translate(finalTransform);

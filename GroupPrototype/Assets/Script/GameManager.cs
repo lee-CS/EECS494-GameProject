@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour {
 	void Start () {
 	
 		cam = GetComponent<GameCamera> ();
-		SpawnPlayer ();
+		//SpawnPlayer ();
 
 	}
 	

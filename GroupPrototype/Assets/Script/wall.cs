@@ -10,6 +10,11 @@ public class wall : MonoBehaviour {
 
 	private float timeCount = 0.0f;
 	private float time = 3.2f;
+
+	private Color red_color = new Color(1, 0, 0, 1);
+	private Color yellow_color = new Color(1, 1, 0, 1);
+	private Color green_color = new Color(0, 1, 0, 1);
+	private Color blue_color = new Color(0, 0, 1, 1);
 	
 	// Use this for initialization
 	void Start () {
@@ -18,6 +23,9 @@ public class wall : MonoBehaviour {
 		                                               gameObject.renderer.material.color.g,
 		                                               gameObject.renderer.material.color.b,
 		                                               0);
+
+
+
 		//renderer.material.color = temp;
 
 
@@ -40,8 +48,18 @@ public class wall : MonoBehaviour {
 				temp.a += 0.02f;
 				renderer.material.color = temp;	
 			}
-			else
+			else{
+				if(color == "red")
+					gameObject.layer = 11;
+				if(color == "yellow")
+					gameObject.layer = 10;
+				if(color == "green")
+					gameObject.layer = 9;
+				if(color == "blue")
+					gameObject.layer = 8;
+
 				underConstruction = false;
+			}
 		}
 
 		if (disappear) {

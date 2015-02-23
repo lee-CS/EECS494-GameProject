@@ -26,6 +26,11 @@ public class PlayerInput : MonoBehaviour {
 
 	public ColorType curColor;
 
+	private Color red_color = new Color(1, 0, 0, 1);
+	private Color yellow_color = new Color(1, 1, 0, 1);
+	private Color green_color = new Color(0, 1, 0, 1);
+	private Color blue_color = new Color(0, 0, 1, 1);
+
 	// Use this for initialization
 	void Start () {
 		if (player_num == 1)
@@ -43,7 +48,7 @@ public class PlayerInput : MonoBehaviour {
 
 	}
 	
-	// Update is called once per frame
+	// Update is called once per frame 
 	void Update () {
 
 		if (!buildingWall) {
@@ -76,7 +81,16 @@ public class PlayerInput : MonoBehaviour {
 			GameObject wall = (GameObject)Instantiate(wallPrefab);
 			wall.GetComponent<MeshRenderer>().material.color = Util.getColorObject(curColor);
 			wall.transform.position = transform.position;
+			if(wall.renderer.material.color == red_color)
+				wall.GetComponent<wall>().color = "red";
+			if(wall.renderer.material.color == yellow_color)
+				wall.GetComponent<wall>().color = "yellow";
+			if(wall.renderer.material.color == green_color)
+				wall.GetComponent<wall>().color = "green";
+			if(wall.renderer.material.color == blue_color)
+				wall.GetComponent<wall>().color = "blue";
 			Color temp = wall.GetComponent<MeshRenderer>().material.color; 
+
 			temp.a = 0f;
 			wall.GetComponent<MeshRenderer>().material.color = temp;
 			wall.GetComponent<wall>().underConstruction = true;

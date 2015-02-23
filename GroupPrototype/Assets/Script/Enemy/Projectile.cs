@@ -87,11 +87,19 @@ public class Projectile : MonoBehaviour {
 		}
 	}
 
-
-
-
-
-
-	
+	void OnTriggerStay(Collider c){
+		if (color == ColorType.Red && c.gameObject.layer == 11) {
+			Destroy (gameObject);
+		}
+		if (color == ColorType.Blue && c.gameObject.layer == 8) {
+			Destroy (gameObject);
+		}
+		if (color == ColorType.Green && c.gameObject.layer == 9) {
+			Destroy (gameObject);
+		}
+		if (color == ColorType.Yellow && c.gameObject.layer == 10) {
+			Destroy (gameObject);
+		}
+	}
 
 }
