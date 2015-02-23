@@ -94,6 +94,7 @@ public class PlayerInput : MonoBehaviour {
 				Debug.Log("wall completed");
 				buildingWall = false;
 				curWall = null;
+				audio.Play ();
 			}
 		}
 		/// Cancel construction if you let go while still being built
