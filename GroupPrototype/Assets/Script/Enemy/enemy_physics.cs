@@ -66,7 +66,7 @@ public class enemy_physics : MonoBehaviour {
 				float dist = Vector3.Distance(ray.origin, hit.point);
 				
 				if(dist > skin) {
-					deltaY = dist * dir - skin * dir;
+					deltaY = dist * dir;
 				}
 				
 				else {
@@ -81,7 +81,7 @@ public class enemy_physics : MonoBehaviour {
 				float dist = Vector3.Distance(ray.origin, hit.point);
 				
 				if(dist > skin) {
-					deltaY = dist * dir - skin * dir;
+					deltaY = dist * dir;
 				}
 				
 				else {
@@ -96,7 +96,7 @@ public class enemy_physics : MonoBehaviour {
 				float dist = Vector3.Distance(ray.origin, hit.point);
 				
 				if(dist > skin) {
-					deltaY = dist * dir - skin * dir;
+					deltaY = dist * dir;
 				}
 				
 				else {
@@ -111,7 +111,7 @@ public class enemy_physics : MonoBehaviour {
 				float dist = Vector3.Distance(ray.origin, hit.point);
 				
 				if(dist > skin) {
-					deltaY = dist * dir - skin * dir;
+					deltaY = dist * dir;
 				}
 				
 				else {
@@ -139,7 +139,7 @@ public class enemy_physics : MonoBehaviour {
 					float dist = Vector3.Distance (ray.origin, hit.point);
 
 					if (dist > skin) {
-						deltaX = dist * dir - skin * dir;
+						deltaX = dist * dir;
 					} 
 
 					else {
@@ -154,7 +154,7 @@ public class enemy_physics : MonoBehaviour {
 					float dist = Vector3.Distance (ray.origin, hit.point);
 					
 					if (dist > skin) {
-						deltaX = dist * dir - skin * dir;
+						deltaX = dist * dir;
 					} 
 					
 					else {
@@ -169,7 +169,7 @@ public class enemy_physics : MonoBehaviour {
 					float dist = Vector3.Distance (ray.origin, hit.point);
 					
 					if (dist > skin) {
-						deltaX = dist * dir - skin * dir;
+						deltaX = dist * dir;
 					} 
 					
 					else {
@@ -184,7 +184,7 @@ public class enemy_physics : MonoBehaviour {
 					float dist = Vector3.Distance (ray.origin, hit.point);
 					
 					if (dist > skin) {
-						deltaX = dist * dir - skin * dir;
+						deltaX = dist * dir;
 					} 
 					
 					else {
