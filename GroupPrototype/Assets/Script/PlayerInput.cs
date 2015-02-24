@@ -5,8 +5,8 @@ public class PlayerInput : MonoBehaviour {
 
 	public int player_num;
 
-	public float speed = 8;
-	public float accel = 30;
+	public float speed 				= 8;
+	public float accel 				= 30;
 
 	public float currentSpeed;
 	private float targetSpeed;
@@ -20,9 +20,11 @@ public class PlayerInput : MonoBehaviour {
 
 	private PlayerPhysics physics;
 
+	public int wallCount			= 0;
+
 	public GameObject wallPrefab;
 	private bool buildingWall;
-	private GameObject curWall;
+	private GameObject[] curWall = new GameObject[100];
 
 	public ColorType curColor;
 
@@ -76,8 +78,16 @@ public class PlayerInput : MonoBehaviour {
 		///CONSTRUCTION CONTROLS
 
 		/// Begin construction
-		if (verifyPlayer() && Input.GetKeyDown(KeyCode.F)||
-		    (!verifyPlayer() && Input.GetKeyDown (KeyCode.Period))) {
+		if ((verifyPlayer() && Input.GetKeyDown(KeyCode.F)||
+		    (!verifyPlayer() && Input.GetKeyDown (KeyCode.Period)))) {
+
+			if (wallCount == 3) {
+				wallCount--;
+				Destroy(curWall[0]);
+				curWall[0] = curWall[1];
+				curWall[1] = curWall[2];
+			}
+
 			GameObject wall = (GameObject)Instantiate(wallPrefab);
 			wall.GetComponent<MeshRenderer>().material.color = Util.getColorObject(curColor);
 			wall.transform.position = transform.position;
@@ -90,34 +100,37 @@ public class PlayerInput : MonoBehaviour {
 			if(wall.renderer.material.color == blue_color)
 				wall.GetComponent<wall>().color = "blue";
 			Color temp = wall.GetComponent<MeshRenderer>().material.color; 
-
 			temp.a = 0f;
 			wall.GetComponent<MeshRenderer>().material.color = temp;
 			wall.GetComponent<wall>().underConstruction = true;
 			Debug.Log("wall");
 			buildingWall = true;
-			curWall = wall;
+			curWall[wallCount] = wall;
+			wallCount++;
 		}
 		/// Continue construction
 		if ( (verifyPlayer() && Input.GetKey (KeyCode.F) && buildingWall ) ||
 		    (!verifyPlayer() && Input.GetKey (KeyCode.Period) && buildingWall ))
 		{
-			Color temp = curWall.renderer.material.color; 
-			curWall.renderer.material.color = temp;	
-			if (curWall.renderer.material.color.a >= 1.0f) {
+			Color temp = curWall[wallCount-1].renderer.material.color; 
+			curWall[wallCount-1].renderer.material.color = temp;	
+			if (curWall[wallCount-1].renderer.material.color.a >= 1.0f) {
 				Debug.Log("wall completed");
 				buildingWall = false;
-				curWall = null;
 				audio.Play ();
 			}
 		}
 		/// Cancel construction if you let go while still being built
 		if ( (verifyPlayer() && Input.GetKeyUp (KeyCode.F) && buildingWall)){
-			Destroy (curWall);
+			wallCount--;
+			Destroy (curWall[wallCount]);
+			curWall[wallCount] = null;
 			buildingWall = false;
 		}
 		else if ( (!verifyPlayer() && Input.GetKeyUp (KeyCode.Period) && buildingWall)){
-			Destroy (curWall);
+			wallCount--;
+			Destroy (curWall[wallCount]);
+			curWall[wallCount] = null;
 			buildingWall = false;
 		}
 

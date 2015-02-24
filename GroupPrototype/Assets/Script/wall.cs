@@ -9,7 +9,7 @@ public class wall : MonoBehaviour {
 	public string color;
 
 	private float timeCount = 0.0f;
-	private float time = 3.2f;
+	private float time = 10f;
 
 	private Color red_color = new Color(1, 0, 0, 1);
 	private Color yellow_color = new Color(1, 1, 0, 1);
