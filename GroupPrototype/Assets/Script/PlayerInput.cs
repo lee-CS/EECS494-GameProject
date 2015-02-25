@@ -33,6 +33,8 @@ public class PlayerInput : MonoBehaviour {
 	private Color green_color = new Color(0, 1, 0, 1);
 	private Color blue_color = new Color(0, 0, 1, 1);
 
+	private bool canBuild;
+
 	// Use this for initialization
 	void Start () {
 		if (player_num == 1)
@@ -47,6 +49,8 @@ public class PlayerInput : MonoBehaviour {
 		starting = new Vector3(0,0,0);
 
 		spawn_point = temp;
+
+		canBuild = true;
 
 	}
 	
@@ -79,7 +83,7 @@ public class PlayerInput : MonoBehaviour {
 
 		/// Begin construction
 		if ((verifyPlayer() && Input.GetKeyDown(KeyCode.F)||
-		    (!verifyPlayer() && Input.GetKeyDown (KeyCode.Period)))) {
+		    (!verifyPlayer() && Input.GetKeyDown (KeyCode.Period))) && canBuild) {
 
 			if (wallCount == 3) {
 				wallCount--;
@@ -177,7 +181,16 @@ public class PlayerInput : MonoBehaviour {
 			
 			
 		}
-		
+
+		if (c.tag == "no") {
+			canBuild = false;
+		}
+	}
+
+	void OnTriggerExit(Collider c) {
+		if(c.tag == "no"){
+			canBuild = true;
+		}
 	}
 
 	private bool verifyPlayer() {

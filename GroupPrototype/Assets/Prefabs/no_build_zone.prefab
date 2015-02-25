@@ -13,7 +13,7 @@ GameObject:
   - 23: {fileID: 2380660}
   - 54: {fileID: 5480660}
   m_Layer: 12
-  m_Name: no_enter_zone
+  m_Name: no_build_zone
   m_TagString: no
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
