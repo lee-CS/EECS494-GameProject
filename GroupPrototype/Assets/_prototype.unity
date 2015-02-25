@@ -164,15 +164,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 100555197}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec710c13e91764244aa84a39af9900db, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cfef325e0fcf6f40b5452dafe82d1bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemy_1: {fileID: 147670, guid: 6d8d2bd7499473b42850f48365866560, type: 2}
-  enemy_2: {fileID: 0}
-  enemy_3: {fileID: 0}
-  spawnTime: 12
-  spawnTime2: 3
-  spawnTime3: 8
+  spawnDelay: 6
+  spawnCycle: 12
+  spawnTimeDelta: -.300000012
+  spawnColor1: 0
+  spawnColor2: 1
 --- !u!23 &100555199
 Renderer:
   m_ObjectHideFlags: 0
@@ -219,8 +219,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 100555197}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -17.2999992, z: 0}
-  m_LocalScale: {x: 61.5, y: 1, z: 1}
+  m_LocalPosition: {x: -.5, y: -21.5, z: 0}
+  m_LocalScale: {x: 40, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
@@ -251,15 +251,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 605272957}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edb23b61b9d1be648b60108d2c59cdd7, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cfef325e0fcf6f40b5452dafe82d1bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemy_1: {fileID: 147670, guid: 6d8d2bd7499473b42850f48365866560, type: 2}
-  enemy_2: {fileID: 0}
-  enemy_3: {fileID: 0}
-  spawnTime: 12
-  spawnTime2: 0
-  spawnTime3: 0
+  spawnDelay: 9
+  spawnCycle: 12
+  spawnTimeDelta: -.300000012
+  spawnColor1: 2
+  spawnColor2: 3
 --- !u!23 &605272959
 Renderer:
   m_ObjectHideFlags: 0
@@ -306,7 +306,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 605272957}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 31.2000008, y: 0, z: 0}
+  m_LocalPosition: {x: 28.3999996, y: -.300000012, z: 0}
   m_LocalScale: {x: 1, y: 33.9946365, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1054,8 +1054,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1279733446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 17.2999992, z: 0}
-  m_LocalScale: {x: 61.5, y: 1, z: 1}
+  m_LocalPosition: {x: -.300000012, y: 22.1000004, z: 0}
+  m_LocalScale: {x: 40, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -1067,15 +1067,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1279733446}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec710c13e91764244aa84a39af9900db, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cfef325e0fcf6f40b5452dafe82d1bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemy_1: {fileID: 147670, guid: 6d8d2bd7499473b42850f48365866560, type: 2}
-  enemy_2: {fileID: 0}
-  enemy_3: {fileID: 0}
-  spawnTime: 12
-  spawnTime2: 3
-  spawnTime3: 8
+  spawnDelay: 0
+  spawnCycle: 12
+  spawnTimeDelta: -.300000012
+  spawnColor1: 0
+  spawnColor2: 1
 --- !u!1001 &1319759719
 Prefab:
   m_ObjectHideFlags: 0
@@ -1381,15 +1381,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1715514770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edb23b61b9d1be648b60108d2c59cdd7, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cfef325e0fcf6f40b5452dafe82d1bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemy_1: {fileID: 147670, guid: 6d8d2bd7499473b42850f48365866560, type: 2}
-  enemy_2: {fileID: 0}
-  enemy_3: {fileID: 0}
-  spawnTime: 12
-  spawnTime2: 0
-  spawnTime3: 0
+  spawnDelay: 3
+  spawnCycle: 12
+  spawnTimeDelta: -.300000012
+  spawnColor1: 2
+  spawnColor2: 3
 --- !u!23 &1715514772
 Renderer:
   m_ObjectHideFlags: 0
@@ -1436,7 +1436,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1715514770}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -31.3999996, y: 0, z: 0}
+  m_LocalPosition: {x: -27.2000008, y: -.300000012, z: 0}
   m_LocalScale: {x: 1, y: 33.9946365, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

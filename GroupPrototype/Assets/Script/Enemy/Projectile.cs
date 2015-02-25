@@ -13,6 +13,8 @@ public class Projectile : MonoBehaviour {
 	public bool goTowardsCrystal = true;
 	//for Camera
 	public float max_dist = 6.4f;	
+	public bool colorOverriding = false;
+
 
 	//public GameObject tree;
 	
@@ -52,7 +54,9 @@ public class Projectile : MonoBehaviour {
 	void Start () {
 		
 		physics = GetComponent<enemy_physics>();
-		color = Util.randomColor ();
+		if (!colorOverriding)
+			color = Util.randomColor ();
+
 		GetComponent<MeshRenderer>().material.color = Util.getColorObject(color);
 
 		if (goTowardsCrystal) {
