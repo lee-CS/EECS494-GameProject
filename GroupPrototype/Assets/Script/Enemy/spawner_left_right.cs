@@ -8,8 +8,8 @@ public class spawner_left_right : MonoBehaviour {
 	public GameObject enemy_3;
 
 
-	public float spawnTime = 2;
-	public float spawnTime2 = 3;
+	public float spawnTime = 7;
+	public float spawnTime2 = 7;
 	public float spawnTime3 = 8;
 	//public float spawnTime4 = 12;
 
@@ -19,7 +19,7 @@ public class spawner_left_right : MonoBehaviour {
 		InvokeRepeating("addenemy_1", spawnTime, spawnTime);
 
 		//Type 2 enemy
-		//InvokeRepeating("addenemy_2", spawnTime2, spawnTime2);
+		InvokeRepeating("addenemy_2", spawnTime2, spawnTime2);
 
 
 		//Type 3 enemy

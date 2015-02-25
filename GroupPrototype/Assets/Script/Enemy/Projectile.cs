@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour {
 	
 	//Enemy Stats Vars
 	//public GameCamera target;
+	public string type;
 	public float speed;
 	public bool goTowardsCrystal = true;
 	//for Camera
@@ -31,7 +32,9 @@ public class Projectile : MonoBehaviour {
 	enemy_physics physics;
 
 
-
+	public float angle;
+	float speed_rotate = (2 * Mathf.PI) / 5; //2*PI in degress is 360, so you get 5 seconds to complete a circle
+	float radius=20;
 
 
 
@@ -66,17 +69,25 @@ public class Projectile : MonoBehaviour {
 	}
 
 	void Update () {
-		Vector2 amountToMove;
 
-		
-		
-		// Handle movement
-		amountToMove.x = Mathf.Cos (Util.getAngleVector(target, transform.position)) * speed;
-		amountToMove.y = Mathf.Sin (Util.getAngleVector(target, transform.position)) * speed;                            	
-		
+		if (type != "circular") {
+						Vector2 amountToMove;
+						// Handle movement
+						amountToMove.x = Mathf.Cos (Util.getAngleVector (target, transform.position)) * speed;
+						amountToMove.y = Mathf.Sin (Util.getAngleVector (target, transform.position)) * speed;                            	
+						physics.Move (amountToMove * Time.deltaTime);
+				} 
 
-		
-		physics.Move(amountToMove*Time.deltaTime);
+		else {
+			angle += speed_rotate*Time.deltaTime; //if you want to switch direction, use -= instead of +=
+			radius -= Time.deltaTime;
+			Vector2 temp = new Vector2 (0, 0);
+			temp.x = Mathf.Cos(angle)*radius;
+			temp.y = Mathf.Sin(angle)*radius;
+			transform.position = temp;
+
+				
+				}
 		
 	}
 	
